@@ -51,6 +51,7 @@ const GenrePage = () => {
           <p> Title </p>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4">
             {filterMovie?.results?.map((movie) => (
+              // hasjdhajs
               <MovieCard movie={movie} key={movie.id} id={movie.id} />
             ))}
           </div>
