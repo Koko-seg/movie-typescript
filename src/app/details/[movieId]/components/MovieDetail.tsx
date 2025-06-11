@@ -5,9 +5,12 @@ import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
-import { Movie, MovieDetails } from "@/types";
+import { MovieDetails } from "@/types";
 import { getMovieById } from "@/lib/api/get-movie-by-id";
 import { CoverDe } from "@/components/Details/CoverDe";
+import { InfoDe } from "@/components/Details/InfoDe";
+import { Director } from "@/components/Details/Director";
+import { MoreLikeThis } from "@/components/Details/MoreLikeThis";
 
 export const MovieDetail = ({ movieId }: { movieId: number }) => {
   const [movie, setMovie] = useState<MovieDetails>();
@@ -26,9 +29,9 @@ export const MovieDetail = ({ movieId }: { movieId: number }) => {
       {movie && (
         <>
           <CoverDe movieId={movieId} movie={movie} />
-          {/* <InfoDe movie={movie} />
+          <InfoDe movie={movie} />
           <Director id={movie.id} />
-          <MoreLikeThis movieId={movie.id} /> */}
+          <MoreLikeThis movieId={movie.id} />
         </>
       )}
       <Footer />

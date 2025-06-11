@@ -33,6 +33,10 @@ export type MoviesResponse = {
 export type Genre = {
   genre: string;
   id: number;
+  name: string;
+  variant: string;
+  genreId: string;
+  results: string;
 };
 
 export type MovieId = {
@@ -73,4 +77,12 @@ export type MovieTrailerProps = {
   site: string;
   size: number;
   type: string;
+};
+export type StaffInfo = {
+  id: number;
+  person: string;
+  name: string;
+  job: string;
+  department: string;
+  known_for_department: string;
 };

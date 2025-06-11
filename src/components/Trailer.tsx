@@ -6,7 +6,12 @@ import YouTube from "react-youtube";
 import { Play } from "lucide-react";
 import { getTrailer } from "@/lib/api/get-trailer";
 import { Dialog } from "./ui/dialog";
-import { DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
+import {
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from "@radix-ui/react-dialog";
 import { MovieTrailerProps } from "@/types";
 
 export const Trailer = ({ movieId }: { movieId: number }) => {
@@ -27,6 +32,7 @@ export const Trailer = ({ movieId }: { movieId: number }) => {
   const movieTrailer = trailer.find(
     (video) => video.name === "Official Trailer"
   );
+  console.log("Selected Trailer:", movieTrailer);
   return (
     <Dialog>
       <DialogTrigger asChild className="w-[145px] h-[40px]">
@@ -35,19 +41,24 @@ export const Trailer = ({ movieId }: { movieId: number }) => {
           Watch Trailer
         </Button>
       </DialogTrigger>
-      <DialogContent className=" sm:max-w-[991px] p-0 bg-transparent border-none">
-        {/* <div className="relative w-full pt-[56.25%]"> */}
-        {/* <div className="absolute top-0 left-0 w-full h-full"> */}
-        <YouTube
-          videoId={movieTrailer?.key}
-          opts={{
-            width: "100%",
-            height: "100%",
-            playerVars: { autoplay: 1 },
-          }}
-        />
-        {/* </div> */}
-        {/* </div> */}
+      <DialogContent className="p-0 overflow-hidden min-w-[640px] min-h-[360px]">
+        <DialogTitle className="sr-only">Movie Trailer</DialogTitle>
+        <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
+          <div className="absolute top-0 left-0 w-full h-full">
+            <DialogDescription className="sr-only">
+              Watch the official trailer of the movie.
+            </DialogDescription>
+            <YouTube
+              videoId={movieTrailer?.key}
+              opts={{
+                width: 640,
+                height: 360,
+                playerVars: { autoplay: 1 },
+              }}
+              className="w-full h-full"
+            />
+          </div>
+        </div>
       </DialogContent>
     </Dialog>
   );

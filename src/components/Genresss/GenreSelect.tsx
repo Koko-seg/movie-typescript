@@ -1,9 +1,11 @@
+"use client";
+
 import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@radix-ui/react-dropdown-menu";
 import { ChevronRight } from "lucide-react";
-import { useRouter } from "next/router";
+
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import {
@@ -14,23 +16,17 @@ import {
 } from "nuqs";
 import { getGenreName } from "@/lib/api/get-genre-name";
 import { Genre } from "@/types";
+import { useRouter } from "next/navigation";
 
 export const GenreSelect = () => {
   const router = useRouter();
 
   const [genres, setGenres] = useState<Genre[]>([]);
 
-  const [genreIds, setGenreIds] = useQueryState(
-    "genreIds",
-    parseAsArrayOf(parseAsInteger).withDefault([])
-  );
-  console.log("mmm", genreIds);
-  const [genreName, setGenreName] = useQueryState(
-    "name",
-    parseAsArrayOf(parseAsString).withDefault([])
-  );
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
+    setHasMounted(true);
     const fetchGenres = async () => {
       const genreZ = await getGenreName();
       setGenres(genreZ.genres);
@@ -38,6 +34,15 @@ export const GenreSelect = () => {
 
     fetchGenres();
   }, []);
+  const [genreIds, setGenreIds] = useQueryState(
+    "genreIds",
+    parseAsArrayOf(parseAsInteger).withDefault([])
+  );
+  // console.log("mmm", genreIds);
+  const [genreName, setGenreName] = useQueryState(
+    "name",
+    parseAsArrayOf(parseAsString).withDefault([])
+  );
 
   const handleSelectGenre = (genreId: number, name: string) => {
     const newGenreIds = genreIds?.includes(genreId)
@@ -63,19 +68,23 @@ export const GenreSelect = () => {
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
       <div className="flex flex-wrap gap-3 pt-5 font-bold">
-        {genres.map((genre: Genre) => {
-          const isSelected = genreIds?.includes(genre.id);
+        {hasMounted ? (
+          genres.map((genre: Genre) => {
+            const isSelected = genreIds?.includes(genre.id);
 
-          return (
-            <Button
-              key={genre.id}
-              variant={isSelected ? "primary" : "outline"}
-              onClick={() => handleSelectGenre(genre.id, genre.name)}
-            >
-              {genre?.name} <ChevronRight />
-            </Button>
-          );
-        })}
+            return (
+              <Button
+                key={genre.id}
+                variant={isSelected ? "default" : "outline"}
+                onClick={() => handleSelectGenre(genre.id, genre.name)}
+              >
+                {genre?.name} <ChevronRight />
+              </Button>
+            );
+          })
+        ) : (
+          <div className="text-gray-500">Loading genres...</div>
+        )}
       </div>
     </div>
   );

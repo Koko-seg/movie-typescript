@@ -19,7 +19,7 @@ export const Genres = () => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="p-5 w-150">
-          {/* <GenreSelect /> */}
+          <GenreSelect />
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
