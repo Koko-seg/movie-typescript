@@ -6,24 +6,19 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { ChevronRight } from "lucide-react";
 
-import { useEffect, useState } from "react";
-import { Button } from "../ui/button";
-import {
-  parseAsArrayOf,
-  parseAsInteger,
-  parseAsString,
-  useQueryState,
-} from "nuqs";
 import { getGenreName } from "@/lib/api/get-genre-name";
 import { Genre } from "@/types";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Button } from "../ui/button";
 
 export const GenreSelect = () => {
   const router = useRouter();
-
   const [genres, setGenres] = useState<Genre[]>([]);
 
+  const [genreIds, setGenreIds] = useState<number[]>([]);
   const [hasMounted, setHasMounted] = useState(false);
+  const [genreName, setGenreName] = useState<string[]>([]);
 
   useEffect(() => {
     setHasMounted(true);
@@ -34,15 +29,8 @@ export const GenreSelect = () => {
 
     fetchGenres();
   }, []);
-  const [genreIds, setGenreIds] = useQueryState(
-    "genreIds",
-    parseAsArrayOf(parseAsInteger).withDefault([])
-  );
+
   // console.log("mmm", genreIds);
-  const [genreName, setGenreName] = useQueryState(
-    "name",
-    parseAsArrayOf(parseAsString).withDefault([])
-  );
 
   const handleSelectGenre = (genreId: number, name: string) => {
     const newGenreIds = genreIds?.includes(genreId)
@@ -55,7 +43,6 @@ export const GenreSelect = () => {
       : [...genreName, name];
 
     setGenreName(newNames);
-
     router.push(`/genre?genreIds=${newGenreIds}&name=${newNames}`);
   };
   return (

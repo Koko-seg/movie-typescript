@@ -68,7 +68,7 @@ const UpcomingPage = () => {
 
             {paginations?.map((pageNumber) => {
               return (
-                <PaginationItem className="cursor-pointer">
+                <PaginationItem>
                   <PaginationLink onClick={() => handleSelectPage(pageNumber)}>
                     {pageNumber}
                   </PaginationLink>

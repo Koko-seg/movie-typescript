@@ -1,3 +1,5 @@
+"use client";
+
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MovieCard } from "@/components/MovieCard";
@@ -48,9 +50,9 @@ const TopRatedPage = () => {
 
   return (
     <div className="w-full lg:max-w-[1278px] mx-auto">
-      <Header />
+      {/* <Header /> */}
       <div className="flex flex-col md:gap-[32px]">
-        <h1 className=" font-semibold text-[black] ">Popular</h1>
+        <h1 className=" font-semibold text-[black] ">Top Rated</h1>
         <div className="grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 gap-8">
           {topRatedMovies?.map((movie) => (
             <MovieCard key={movie.id} movie={movie} id={movie.id} />

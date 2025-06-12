@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 
 import { Genres } from "./Genresss/Genre";
 import { ModeToggle } from "./ModeToggle";
+import { SearchHeader } from "./Search/SearchHeader";
 
 export const Header = () => {
   const [visible, setVisible] = useState(false);
@@ -33,7 +34,7 @@ export const Header = () => {
               className="absolute -translate-y-1/2 cursor-pointer left-3 top-1/2"
             />
 
-            {/* <SearchHeader /> */}
+            <SearchHeader />
           </div>
         </div>
         <div className="flex gap-3">

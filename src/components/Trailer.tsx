@@ -32,7 +32,7 @@ export const Trailer = ({ movieId }: { movieId: number }) => {
   const movieTrailer = trailer.find(
     (video) => video.name === "Official Trailer"
   );
-  console.log("Selected Trailer:", movieTrailer);
+
   return (
     <Dialog>
       <DialogTrigger asChild className="w-[145px] h-[40px]">

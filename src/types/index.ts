@@ -1,4 +1,5 @@
 import { StepId } from "framer-motion";
+import { StringifyOptions } from "querystring";
 
 export type Movie = {
   adult: boolean;
@@ -17,6 +18,7 @@ export type Movie = {
   vote_count: number;
   page_number: number;
   runtime: string;
+  results: string;
 };
 
 export type MoviesResponse = {
@@ -36,7 +38,7 @@ export type Genre = {
   name: string;
   variant: string;
   genreId: string;
-  results: string;
+  results: Movie[];
 };
 
 export type MovieId = {
@@ -85,4 +87,15 @@ export type StaffInfo = {
   job: string;
   department: string;
   known_for_department: string;
+};
+export type Search = {
+  original_title: string;
+  poster_path: string;
+  popularity: number;
+  release_date: string;
+  id: number;
+  setSearchValue: string;
+  results: string;
+  searchValue: string;
+  value: string | number;
 };
