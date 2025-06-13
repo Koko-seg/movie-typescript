@@ -15,10 +15,10 @@ import {
 } from "@/components/ui/pagination";
 
 import { getSearchSection } from "@/lib/api/get-search-value";
-import { number } from "framer-motion";
+
 import { Genres } from "@/components/Genresss/Genre";
 import { Movie } from "@/types";
-import { useSearchParams } from "next/navigation";
+
 
 const SearchMoviePage = () => {
   const [searchResults, setSearchResults] = useState<{

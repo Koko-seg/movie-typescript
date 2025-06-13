@@ -17,14 +17,16 @@ export const Header = () => {
   return (
     <div>
       <nav className="flex md:w-full p-[20px] md:justify-between justify-between  items-center">
-        <div className="flex  flex-row justify-center text-[#4338CA] ">
-          <Link href={"/"}>
+      <Link href={"/"}>
+        <div className=" flex  text-[#4338CA] ">
+         
             <Film />
-            <b className="text-[16px]">
+            <b className="text-[16px] flex">
               <i>MovieZ</i>
             </b>
-          </Link>
+         
         </div>
+        </Link>
 
         <div className=" hidden md:flex gap-[12px] flex-row">
           <Genres />
@@ -56,7 +58,7 @@ export const Header = () => {
                   className="absolute px-4 left-25"
                 >
                   <div className="w-full rounded-xl">
-                    <SearchHeader searchValue={searchValue} />
+                    <SearchHeader  />
                   </div>
                 </motion.div>
               )}
