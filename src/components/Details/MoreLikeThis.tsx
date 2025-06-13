@@ -9,8 +9,6 @@ import { getLikeThis } from "@/lib/api/get-like-this";
 import { Movie } from "@/types";
 
 export const MoreLikeThis = ({ movieId }: { movieId: number }) => {
-  //   const router = useRouter();
-  //   const movieId = router.query.movieId;
   const [likeThis, setLikeThis] = useState<Movie[]>([]);
 
   useEffect(() => {
@@ -29,7 +27,7 @@ export const MoreLikeThis = ({ movieId }: { movieId: number }) => {
     <div className="flex flex-col gap-8 p-5 md:px-20 ">
       <div className="flex justify-between md:gap-[32px]">
         <h1 className=" font-semibold text-[black] ">More Like This</h1>
-        <Link href={`/more_like_this`}>
+        <Link href={`/morelikethis`}>
           <Button variant="ghost">
             See more <ArrowRight className="w-[16px] h-[16px]" />
           </Button>

@@ -1,15 +1,14 @@
-import { Search } from "@/types";
+import { Movie, Search } from "@/types";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { ArrowRight, Star } from "lucide-react";
-import { useRouter } from "next/router";
-import { stringify } from "querystring";
+import { useRouter } from "next/navigation";
 
 export const SearchResultCard = ({
   movie,
   setSearchValue,
 }: {
-  movie: Search;
-  setSearchValue: React.Dispatch<React.SetStateAction<Search[]>>;
+  movie: Movie;
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const { original_title, poster_path, popularity, release_date, id } = movie;
 
@@ -17,7 +16,7 @@ export const SearchResultCard = ({
 
   const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${poster_path}`;
   const handleSeeMore = () => {
-    setSearchValue([]);
+    setSearchValue("");
     router.push(`/details/${id}`);
   };
 

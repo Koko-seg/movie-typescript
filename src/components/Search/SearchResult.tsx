@@ -1,9 +1,10 @@
-import { Search } from "@/types";
+import { Movie, Search } from "@/types";
 import { SearchResultCard } from "./SearchResultCard";
 
 type SearchResultsProps = {
-  movies: Search[];
-  setSearchValue: React.Dispatch<React.SetStateAction<Search[]>>;
+  movies: Movie[];
+  // setSearchValue: React.Dispatch<React.SetStateAction<Search[]>>;
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const SearchResults = ({

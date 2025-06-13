@@ -29,8 +29,11 @@ export const SearchHeader = () => {
         />
       </div>
       {movies?.length > 0 && (
-        <SearchResults movie={movies} setSearchValue={setSearchValue} />
+        <SearchResults movies={movies} setSearchValue={setSearchValue} />
       )}
+      {/* <p className="hidden">
+        <button> See More Results </button>
+      </p> */}
     </div>
   );
 };

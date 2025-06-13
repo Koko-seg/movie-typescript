@@ -7,17 +7,17 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-
 import { Genres } from "./Genresss/Genre";
-import { ModeToggle } from "./ModeToggle";
+
 import { SearchHeader } from "./Search/SearchHeader";
+import { ModeToggle } from "./ModeToggle";
 
 export const Header = () => {
   const [visible, setVisible] = useState(false);
   return (
     <div>
       <nav className="flex md:w-full p-[20px] md:justify-between justify-between  items-center">
-        <div className="flex justify-center text-[#4338CA] ">
+        <div className="flex  flex-row justify-center text-[#4338CA] ">
           <Link href={"/"}>
             <Film />
             <b className="text-[16px]">
@@ -37,7 +37,7 @@ export const Header = () => {
             <SearchHeader />
           </div>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-3 z-50">
           <div className="flex md:hidden">
             <Button
               variant="outline"
@@ -56,13 +56,13 @@ export const Header = () => {
                   className="absolute px-4 left-25"
                 >
                   <div className="w-full rounded-xl">
-                    {/* <SearchHeader searchValue={searchValue} /> */}
+                    <SearchHeader searchValue={searchValue} />
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
-            <ModeToggle />
           </div>
+          <ModeToggle />
         </div>
       </nav>
     </div>

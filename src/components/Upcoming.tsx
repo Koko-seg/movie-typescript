@@ -1,9 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-
 import { Button } from "./ui/button";
-
 import Link from "next/link";
 import { MovieCardLoading } from "./MovieCardLoading";
 import { MovieCard } from "./MovieCard";

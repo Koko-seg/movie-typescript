@@ -13,6 +13,7 @@ export type Movie = {
   poster_path: string;
   release_date: string;
   title: string;
+  name?: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
@@ -94,8 +95,9 @@ export type Search = {
   popularity: number;
   release_date: string;
   id: number;
-  setSearchValue: string;
-  results: string;
+  name?: string;
+  // setSearchValue: string;
+  results: Search[];
   searchValue: string;
   value: string | number;
 };
