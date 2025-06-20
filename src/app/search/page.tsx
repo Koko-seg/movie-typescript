@@ -46,7 +46,7 @@ console.log ("ppppp",name)
 
       const data = await getSearchSection(name);
 
-      setSearchResults(data);
+      setSearchResults(data);// eniig bas zasah
       setTotalPages(data?.total_pages ?? 0);
     };
     fetchMovies();
