@@ -20,17 +20,15 @@ export type Movie = {
   page_number: number;
   runtime: string;
   results: string;
+  total_results: number;
 };
 
 export type MoviesResponse = {
-  dates: {
-    maximum: string;
-    minimum: string;
-  };
   page: number;
   results: Movie[];
   total_pages: number;
   total_results: number;
+  data: string
 };
 
 export type Genre = {

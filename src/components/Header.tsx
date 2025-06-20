@@ -31,10 +31,8 @@ export const Header = () => {
         <div className=" hidden md:flex gap-[12px] flex-row">
           <Genres />
           <div className={cn("relative text-muted-foreground", "w-[379px]")}>
-            <Search
-              size={16}
-              className="absolute -translate-y-1/2 cursor-pointer left-3 top-1/2"
-            />
+           
+         
 
             <SearchHeader />
           </div>

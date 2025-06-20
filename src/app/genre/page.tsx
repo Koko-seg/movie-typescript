@@ -4,16 +4,17 @@ import { GenreSelect } from "@/components/Genresss/GenreSelect";
 import { Header } from "@/components/Header";
 import { MovieCard } from "@/components/MovieCard";
 import { getGenreFilter } from "@/lib/api/get-genre-filter";
-import { Genre, Movie } from "@/types";
+import { Genre, Movie, MoviesResponse } from "@/types";
 import { useSearchParams } from "next/navigation";
 import { parseAsInteger, useQueryState } from "nuqs";
 import { useEffect, useState } from "react";
 
 const GenrePage = () => {
   const search = useSearchParams();
+   const name = useSearchParams().get("name")
   const genreId = search.get("genreIds");
 
-  const [filterMovie, setFilterMovie] = useState<{ results: Movie[] }>();
+  const [filterMovie, setFilterMovie] = useState< MoviesResponse >();
   const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const GenrePage = () => {
   };
 
   return (
-    <div className="w-full lg:max-w-[1800px] mx-auto flex flex-col gap-y-[32px]">
+    <div className="w-full lg:max-w-[1800px] mx-auto flex flex-col gap-y-[32px] p-5">
       <p className="font-semibold text-[30px] pl-20">Search Filter</p>
       <div className="flex mt-8 ">
         <div className=" flex flex-wrap w-[387px] ">
@@ -44,7 +45,7 @@ const GenrePage = () => {
         </div>
         <div className="sm:border-1 sm:max-h-full sm:mt-32 sm:mx-5"></div>
         <div className="p-5">
-          <p> Title </p>
+          <p> {filterMovie?.total_results} titles in {name} </p>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4">
             {filterMovie?.results?.map((movie: Movie) => (
               <MovieCard movie={movie} key={movie.id} id={movie.id} />

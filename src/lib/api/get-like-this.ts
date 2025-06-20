@@ -1,6 +1,6 @@
 export const getLikeThis = async (movieId: number, page = 1) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/movie/${movieId}}/similar?language=en-US&page=${page}`,
+    `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/movie/${movieId}/similar?language=en-US&page=${page}`,
     {
       method: "GET",
       headers: {

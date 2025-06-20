@@ -1,4 +1,5 @@
 import { MoviesResponse } from "@/types";
+import { number } from "framer-motion";
 
 export const getSearchSection = async (searchValue: string) => {
   try {
